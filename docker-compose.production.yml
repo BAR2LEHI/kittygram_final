@@ -10,13 +10,13 @@ services:
     image: postgres:13
     env_file: .env
     volumes:
-      - pg_data_production:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
   backend:
     image: bar2les/kittygram_backend
     env_file: .env
     volumes:
-      - static_production:/backend_static
-      - media_production:/media
+      - static:/backend_static
+      - media:/media
     depends_on:
       - db
   frontend:
@@ -24,13 +24,13 @@ services:
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static_production:/frontend_static
+      - static:/frontend_static
   gateway:
     image: bar2les/kittygram_gateway
     env_file: .env
     ports:
       - 9000:80
     volumes:
-      - static_production:/staticfiles/
-      - media_production:/media/
+      - static:/staticfiles/
+      - media:/media/
 
