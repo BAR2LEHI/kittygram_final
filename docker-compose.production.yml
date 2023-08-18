@@ -15,8 +15,8 @@ services:
     image: bar2les/kittygram_backend
     env_file: .env
     volumes:
-      - static_production:/backend_static/
-      - media_production:/media/
+      - static_production:/backend_static
+      - media_production:/media
     depends_on:
       - db
   frontend:
@@ -24,7 +24,7 @@ services:
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static_production:/frontend_static/
+      - static_production:/frontend_static
   gateway:
     image: bar2les/kittygram_gateway
     env_file: .env
