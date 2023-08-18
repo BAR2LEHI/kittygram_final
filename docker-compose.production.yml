@@ -1,9 +1,9 @@
 version: '3'
 
 volumes:
-  pg_data_production:
-  static_production:
-  media_production:
+  pg_data:
+  static:
+  media:
 
 services:
   db:
@@ -31,6 +31,6 @@ services:
     ports:
       - 9000:80
     volumes:
-      - static_production:/static/
+      - static_production:/staticfiles/
       - media_production:/media/
 
